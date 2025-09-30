@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Kalkulator Sederhana</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #74ebd5, #ACB6E5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .calculator {
+      background: white;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      text-align: center;
+      width: 280px;
+    }
+    .calculator h2 {
+      margin-bottom: 15px;
+      color: #333;
+    }
+    .calculator input, .calculator select, .calculator button {
+      width: 90%;
+      margin: 8px 0;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+    .calculator button {
+      background: #4CAF50;
+      color: white;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .calculator button:hover {
+      background: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <div class="calculator">
+    <h2>Kalkulator</h2>
+    <input type="number" id="angka1" placeholder="Masukkan angka pertama">
+    <input type="number" id="angka2" placeholder="Masukkan angka kedua">
+    <select id="operator">
+      <option value="+">Tambah (+)</option>
+      <option value="-">Kurang (-)</option>
+      <option value="*">Kali (×)</option>
+      <option value="/">Bagi (÷)</option>
+    </select>
+    <button onclick="hitung()">Hitung</button>
+  </div>
+
+  <script>
+    function hitung() {
+      let a = parseFloat(document.getElementById("angka1").value);
+      let b = parseFloat(document.getElementById("angka2").value);
+      let op = document.getElementById("operator").value;
+      let hasil;
+
+      if (isNaN(a) || isNaN(b)) {
+        alert("Harap masukkan angka terlebih dahulu!");
+        return;
+      }
+
+      switch(op) {
+        case "+": hasil = a + b; break;
+        case "-": hasil = a - b; break;
+        case "*": hasil = a * b; break;
+        case "/": 
+          if (b === 0) {
+            alert("Tidak bisa dibagi dengan nol!");
+            return;
+          }
+          hasil = a / b; 
+          break;
+        default: hasil = "Operator tidak valid";
+      }
+
+      alert("Hasil: " + hasil);
+    }
+  </script>
+</body>
+</html>
